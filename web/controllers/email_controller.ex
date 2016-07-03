@@ -5,6 +5,7 @@ defmodule Emailapp.EmailController do
   def index(conn, _params) do
     changeset = Email.changeset(%Email{})
     emails = Repo.all(Email)
+
     render(conn, "index.html", changeset: changeset, emails: emails)
   end
 
@@ -24,6 +25,4 @@ defmodule Emailapp.EmailController do
         |> render("index.html", changeset: changeset, emails: emails)
     end
   end
-
-
 end
