@@ -1,0 +1,21 @@
+<h2>Send an email</h2>
+<%= form_for @changeset, email_path(@conn, :create), fn f -> %>
+  <div class="form-group">
+    <%= text_input f, :recipient, placeholder: "Recipient", class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= text_input f, :subject, placeholder: "Subject", class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= textarea f, :content, placeholder: "Content", class: "form-control", rows: 10 %>
+  </div>
+  <%= submit "Send Email", class: "btn btn-primary"%>
+<% end %>
+<hr>
+<h2>Email history</h2>
+<%= for email <- @emails do %>
+  <strong>To:</strong> <%= email.recipient %>
+  <strong>Subject:</strong> <%= email.subject %>
+  <hr>
+<% end %>
+
